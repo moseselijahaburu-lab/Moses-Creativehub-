@@ -4,25 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#310b0b">
-<meta name="description" content="MOSES CREATIVEHUB — Explore creative designs, artwork, branding concepts, and projects.">
+<meta name="description" content="MOSES CREATIVEHUB — Explore original designs, artwork, branding, and creative projects.">
 <title>MOSES CREATIVEHUB | Creative Portfolio</title>
 
 <style>
 :root {
-    --red: #a51c16;
-    --red-light: #ff7770;
-    --burgundy: #310b0b;
-    --background: #100909;
-    --card: #1c1212;
-    --text: #ffffff;
-    --muted: #c4b5b5;
-    --border: rgba(255,255,255,.10);
+    --red:#a51c16;
+    --red-light:#ff7770;
+    --burgundy:#310b0b;
+    --background:#100909;
+    --card:#1c1212;
+    --text:#fff;
+    --muted:#c4b5b5;
+    --border:rgba(255,255,255,.10);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:75px; }
 body {
-    background:var(--background); color:var(--text);
-    font-family:Arial,Helvetica,sans-serif; line-height:1.7; overflow-x:hidden;
+    background:var(--background);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
 }
 a { color:inherit; text-decoration:none; }
 button { font:inherit; }
@@ -30,108 +33,202 @@ img { display:block; max-width:100%; }
 .container { width:min(1100px,92%); margin:auto; }
 .section { padding:80px 0; }
 .section-heading { text-align:center; margin-bottom:38px; }
-.section-heading h2 { font-size:clamp(27px,5vw,40px); line-height:1.2; margin-bottom:12px; }
+.section-heading h2 {
+    font-size:clamp(27px,5vw,40px);
+    line-height:1.2;
+    margin-bottom:12px;
+}
 .section-heading p { color:var(--muted); font-size:15px; }
 .accent { color:var(--red-light); }
 
 /* Navigation */
 header {
-    position:sticky; top:0; z-index:1000; background:rgba(16,9,9,.97);
-    border-bottom:1px solid var(--border); backdrop-filter:blur(12px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(16,9,9,.97);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(12px);
 }
-.navbar { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:15px; }
-.logo { font-size:17px; font-weight:900; letter-spacing:.7px; white-space:nowrap; }
+.navbar {
+    min-height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+.logo { font-size:17px; font-weight:900; letter-spacing:.7px; }
 .logo span { color:var(--red-light); }
-.nav-links { display:flex; align-items:center; gap:21px; list-style:none; }
+.nav-links {
+    display:flex;
+    align-items:center;
+    gap:21px;
+    list-style:none;
+}
 .nav-links a { color:#e9dddd; font-size:13px; }
 .nav-links a:hover { color:var(--red-light); }
 .menu-button {
-    display:none; background:transparent; border:1px solid var(--border);
-    border-radius:8px; color:white; padding:7px 11px; font-size:12px; cursor:pointer;
+    display:none;
+    background:transparent;
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:white;
+    padding:7px 11px;
+    font-size:12px;
+    cursor:pointer;
 }
 
 /* Hero */
 .hero {
-    min-height:78vh; display:flex; align-items:center; position:relative; overflow:hidden;
+    min-height:78vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
     background:
       radial-gradient(circle at 15% 20%,rgba(255,74,56,.22),transparent 35%),
-      linear-gradient(115deg,#8b1008 0%,#57100f 43%,#310b0b 75%,#190909 100%);
+      linear-gradient(115deg,#8b1008,#57100f 43%,#310b0b 75%,#190909);
 }
-.hero::after {
-    content:""; position:absolute; width:280px; height:280px; border:1px solid rgba(255,255,255,.08);
-    border-radius:50%; right:-140px; bottom:-130px;
-    box-shadow:0 0 0 35px rgba(255,255,255,.025),0 0 0 70px rgba(255,255,255,.018);
-    pointer-events:none;
-}
-.hero-content { max-width:760px; padding:65px 0; position:relative; z-index:1; }
+.hero-content { max-width:760px; padding:65px 0; }
 .eyebrow {
-    display:inline-block; padding:6px 13px; border:1px solid rgba(255,255,255,.25);
-    border-radius:30px; background:rgba(0,0,0,.12); font-size:11px;
-    letter-spacing:1.8px; margin-bottom:22px;
+    display:inline-block;
+    padding:6px 13px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:30px;
+    font-size:11px;
+    letter-spacing:1.8px;
+    margin-bottom:22px;
 }
-.hero h1 { font-size:clamp(38px,8vw,76px); line-height:1.08; letter-spacing:-1.8px; margin-bottom:20px; }
+.hero h1 {
+    font-size:clamp(38px,8vw,76px);
+    line-height:1.08;
+    letter-spacing:-1.8px;
+    margin-bottom:20px;
+}
 .hero h1 span { color:#ffb0a8; }
-.hero p { max-width:570px; color:#f0dada; font-size:16px; margin-bottom:27px; }
+.hero p { max-width:570px; color:#f0dada; margin-bottom:27px; }
 .hero-buttons { display:flex; flex-wrap:wrap; gap:12px; }
 .button {
-    display:inline-flex; justify-content:center; align-items:center; min-height:45px;
-    padding:11px 19px; border-radius:8px; font-size:13px; font-weight:bold;
-    text-align:center; transition:transform .2s,background .2s,border-color .2s;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    min-height:45px;
+    padding:11px 19px;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:bold;
+    text-align:center;
 }
-.button:hover { transform:translateY(-2px); }
 .button-primary { background:white; color:#39100e; }
-.button-secondary { background:rgba(0,0,0,.12); color:white; border:1px solid rgba(255,255,255,.35); }
-.button-secondary:hover { border-color:var(--red-light); }
+.button-secondary {
+    background:rgba(0,0,0,.12);
+    color:white;
+    border:1px solid rgba(255,255,255,.35);
+}
 
 /* About */
-.about-grid { display:grid; grid-template-columns:1fr 1.3fr; align-items:center; gap:35px; }
+.about-grid {
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    align-items:center;
+    gap:35px;
+}
 .about-visual {
-    min-height:270px; display:grid; place-items:center; text-align:center; padding:24px;
-    border:1px solid rgba(255,119,112,.2); border-radius:16px;
-    background:radial-gradient(circle at top left,#541616,transparent 65%),linear-gradient(145deg,#281010,#130b0b);
+    min-height:270px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:24px;
+    border:1px solid rgba(255,119,112,.2);
+    border-radius:16px;
+    background:linear-gradient(145deg,#281010,#130b0b);
 }
 .about-symbol { display:block; font-size:65px; color:var(--red-light); }
 .about-visual strong { display:block; font-size:18px; margin-top:8px; }
 .about-visual p,.about-text p { color:var(--muted); }
-.about-visual p { font-size:12px; }
-.about-text h3 { font-size:25px; line-height:1.3; margin-bottom:14px; }
+.about-text h3 { font-size:25px; margin-bottom:14px; }
 .about-text p { font-size:14px; margin-bottom:14px; }
 
 /* Portfolio */
-.portfolio { background:#150c0c; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-.filters { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin-bottom:28px; }
-.filter-button {
-    padding:8px 14px; background:#211313; color:#e6d6d6; border:1px solid var(--border);
-    border-radius:25px; font-size:12px; cursor:pointer;
+.portfolio {
+    background:#150c0c;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
-.filter-button.active,.filter-button:hover { background:#7f1713; border-color:#a83a32; color:white; }
-.gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
-.art-card { min-width:0; overflow:hidden; border:1px solid var(--border); border-radius:12px; background:var(--card); transition:transform .25s,border-color .25s; }
-.art-card:hover { transform:translateY(-4px); border-color:rgba(255,119,112,.5); }
+.filters {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:9px;
+    margin-bottom:28px;
+}
+.filter-button {
+    padding:8px 14px;
+    background:#211313;
+    color:#e6d6d6;
+    border:1px solid var(--border);
+    border-radius:25px;
+    font-size:12px;
+    cursor:pointer;
+}
+.filter-button.active,.filter-button:hover {
+    background:#7f1713;
+    border-color:#a83a32;
+    color:white;
+}
+.gallery {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:17px;
+}
+.art-card {
+    min-width:0;
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    transition:transform .25s,border-color .25s;
+}
+.art-card:hover {
+    transform:translateY(-4px);
+    border-color:rgba(255,119,112,.5);
+}
 .art-card[hidden] { display:none; }
-.artwork { min-height:180px; display:grid; place-items:center; text-align:center; padding:16px; position:relative; overflow:hidden; }
-.artwork::before { content:""; position:absolute; width:145px; height:145px; border:1px solid rgba(255,255,255,.18); border-radius:50%; }
-.artwork::after { content:""; position:absolute; width:100px; height:100px; border:1px solid rgba(255,255,255,.10); transform:rotate(45deg); }
-.artwork span { position:relative; z-index:1; font-size:23px; font-weight:900; letter-spacing:1.5px; }
-.artwork small { display:block; font-size:9px; letter-spacing:2px; font-weight:normal; }
-.art-one { background:linear-gradient(135deg,#a51c16,#310b0b); }
-.art-two { background:linear-gradient(135deg,#37204c,#100909); }
-.art-three { background:linear-gradient(135deg,#173b39,#101111); }
-.art-four { background:linear-gradient(135deg,#9a4c20,#35110d); }
-.art-five { background:linear-gradient(135deg,#303b63,#151021); }
-.art-six { background:linear-gradient(135deg,#692341,#210d18); }
+.art-image {
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    background:#211313;
+}
 .art-info { padding:14px; }
-.art-info h3 { font-size:15px; margin-bottom:4px; }
-.art-info p,.gallery-note { color:var(--muted); font-size:12px; }
-.gallery-note { text-align:center; margin-top:22px; }
+.art-info h3 { font-size:15px; margin-bottom:4px; overflow-wrap:anywhere; }
+.art-info p { color:var(--muted); font-size:12px; overflow-wrap:anywhere; }
+.gallery-note {
+    color:var(--muted);
+    font-size:13px;
+    text-align:center;
+    margin-top:22px;
+}
+.gallery-status {
+    text-align:center;
+    color:var(--muted);
+    padding:35px 12px;
+    overflow-wrap:anywhere;
+}
+.gallery-status.error { color:#ff9a93; }
 
 /* Projects */
-.project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:17px; }
-.project-card {
-    padding:23px; background:linear-gradient(145deg,#241313,#160c0c);
-    border:1px solid var(--border); border-radius:12px; transition:border-color .2s,transform .2s;
+.project-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:17px;
 }
-.project-card:hover { transform:translateY(-3px); border-color:rgba(255,119,112,.35); }
+.project-card {
+    padding:23px;
+    background:linear-gradient(145deg,#241313,#160c0c);
+    border:1px solid var(--border);
+    border-radius:12px;
+}
 .project-number { font-size:11px; color:var(--red-light); letter-spacing:1.5px; }
 .project-card h3 { font-size:19px; margin:10px 0; }
 .project-card p { color:var(--muted); font-size:13px; }
@@ -142,66 +239,399 @@ header {
     border-top:1px solid var(--border);
 }
 .contact-box {
-    max-width:650px; margin:auto; padding:32px 24px; text-align:center;
-    border:1px solid var(--border); border-radius:16px; background:rgba(255,255,255,.025);
+    max-width:650px;
+    margin:auto;
+    padding:32px 24px;
+    text-align:center;
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:rgba(255,255,255,.025);
 }
 .contact-box h3 { font-size:25px; margin-bottom:12px; }
-.contact-box > p { color:var(--muted); font-size:14px; margin-bottom:23px; }
-.contact-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.contact-box>p { color:var(--muted); font-size:14px; margin-bottom:23px; }
+.contact-links {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+}
 .contact-details { margin-top:22px; overflow-wrap:anywhere; }
 .contact-details p { color:var(--muted); font-size:14px; margin-bottom:7px; }
 .contact-details a { color:#ff9a93; }
-.contact-details a:hover { text-decoration:underline; }
 
 /* Footer */
-footer { padding:22px 0; border-top:1px solid var(--border); text-align:center; color:var(--muted); font-size:12px; }
+footer {
+    padding:22px 0;
+    border-top:1px solid var(--border);
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+}
 footer strong { color:white; }
 
-/* Responsive mobile layout */
-@media (max-width:760px) {
+/* Mobile */
+@media(max-width:760px) {
     html { scroll-padding-top:62px; }
-    .container { width:92%; }
     .navbar { min-height:58px; gap:8px; }
     .logo { font-size:13px; letter-spacing:.3px; }
     .menu-button { display:block; flex-shrink:0; }
     .nav-links {
-        display:none; position:absolute; top:58px; left:0; right:0; padding:12px 4%;
-        background:#160b0b; border-bottom:1px solid var(--border);
-        flex-direction:column; align-items:stretch; gap:0;
+        display:none;
+        position:absolute;
+        top:58px;
+        left:0;
+        right:0;
+        padding:12px 4%;
+        background:#160b0b;
+        border-bottom:1px solid var(--border);
+        flex-direction:column;
+        align-items:stretch;
+        gap:0;
     }
     .nav-links.open { display:flex; }
     .nav-links a { display:block; padding:10px 5px; font-size:14px; }
     .hero { min-height:68vh; }
     .hero-content { padding:48px 0; }
-    .hero h1 { font-size:clamp(35px,9vw,52px); line-height:1.12; letter-spacing:-.8px; }
-    .hero p { font-size:14px; line-height:1.7; }
+    .hero h1 { font-size:clamp(35px,9vw,52px); letter-spacing:-.8px; }
+    .hero p { font-size:14px; }
     .eyebrow { font-size:9px; letter-spacing:1.2px; }
-    .hero-buttons { gap:10px; }
-    .button { min-height:42px; padding:10px 14px; font-size:12px; }
     .section { padding:48px 0; }
     .section-heading { margin-bottom:26px; }
     .section-heading h2 { font-size:28px; }
     .section-heading p { font-size:13px; }
     .about-grid { grid-template-columns:1fr; gap:20px; }
-    .about-visual { min-height:185px; border-radius:13px; }
+    .about-visual { min-height:185px; }
     .about-symbol { font-size:50px; }
-    .about-visual strong { font-size:16px; }
     .about-text h3 { font-size:22px; }
     .about-text p { font-size:13px; }
     .gallery { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-    .artwork { min-height:125px; padding:10px; }
-    .artwork::before { width:100px; height:100px; }
-    .artwork::after { width:70px; height:70px; }
-    .artwork span { font-size:18px; }
-    .artwork small { font-size:8px; letter-spacing:1px; }
     .art-info { padding:11px; }
     .art-info h3 { font-size:13px; }
     .art-info p { font-size:11px; }
-    .filters { gap:7px; }
     .filter-button { padding:7px 11px; font-size:11px; }
     .project-grid { grid-template-columns:1fr; gap:12px; }
     .project-card { padding:19px; }
-    .project-card h3 { font-size:17px; }
+    .contact-box { padding:24px 16px; }
+    .contact-links { flex-direction:column; }
+    .contact-links .button { width:100%; }
+}
+@media(max-width:360px) {
+    .logo { font-size:11px; }
+    .gallery { grid-template-columns:1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    *,*::before,*::after { transition-duration:.01ms!important; }
+}
+</style>
+</head>
+
+<body>
+<header>
+<nav class="navbar container" aria-label="Main navigation">
+    <a class="logo" href="#home">MOSES <span>CREATIVEHUB</span></a>
+    <button class="menu-button" id="menuButton"
+      aria-expanded="false" aria-controls="navLinks">MENU ☰</button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#portfolio">My Designs</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+    <span class="eyebrow">CREATIVITY • DESIGN • VISION</span>
+    <h1>Welcome to<br><span>MOSES</span><br>CREATIVEHUB</h1>
+    <p>A creative space where imagination meets design. Explore my original artwork, discover my projects, and experience creativity through a different lens.</p>
+    <div class="hero-buttons">
+        <a class="button button-primary" href="#portfolio">Explore My Designs ↗</a>
+        <a class="button button-secondary" href="#about">Discover My Story</a>
+    </div>
+</div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container">
+<div class="section-heading">
+    <h2>About <span class="accent">Me</span></h2>
+    <p>Get to know the creative mind behind the work.</p>
+</div>
+<div class="about-grid">
+    <div class="about-visual">
+        <div>
+            <span class="about-symbol" aria-hidden="true">✦</span>
+            <strong>MOSES CREATIVEHUB</strong>
+            <p>Ideas become visual experiences.</p>
+        </div>
+    </div>
+    <div class="about-text">
+        <h3>Creativity with a <span class="accent">Purpose.</span></h3>
+        <p>Welcome to my creative world. MOSES CREATIVEHUB is a portfolio dedicated to showcasing design, imagination, and original creative projects.</p>
+        <p>This is where I share my work, document my creative journey, and connect with people who appreciate thoughtful visual design.</p>
+        <p>Every project is an opportunity to learn, experiment, and turn an idea into something meaningful.</p>
+        <a class="button button-secondary" href="#contact">Let's Connect ↗</a>
+    </div>
+</div>
+</div>
+</section>
+
+<section class="section portfolio" id="portfolio">
+<div class="container">
+<div class="section-heading">
+    <h2>My <span class="accent">Designs</span></h2>
+    <p>Original work published from my creative dashboard.</p>
+</div>
+
+<div class="filters" aria-label="Filter designs">
+    <button class="filter-button active" data-filter="all" aria-pressed="true">All Designs</button>
+    <button class="filter-button" data-filter="branding" aria-pressed="false">Branding</button>
+    <button class="filter-button" data-filter="digital" aria-pressed="false">Digital Art</button>
+    <button class="filter-button" data-filter="concepts" aria-pressed="false">Concepts</button>
+</div>
+
+<div class="gallery" id="gallery" aria-live="polite"></div>
+<div class="gallery-status" id="galleryStatus">Loading published designs...</div>
+<p class="gallery-note">New designs appear here when they are published through the admin dashboard.</p>
+</div>
+</section>
+
+<section class="section" id="projects">
+<div class="container">
+<div class="section-heading">
+    <h2>Featured <span class="accent">Projects</span></h2>
+    <p>A space for selected work and creative experiments.</p>
+</div>
+<div class="project-grid">
+    <article class="project-card">
+        <span class="project-number">PROJECT 01</span>
+        <h3>Creative Brand Identity</h3>
+        <p>Exploring visual identity, typography, consistency, and memorable design.</p>
+    </article>
+    <article class="project-card">
+        <span class="project-number">PROJECT 02</span>
+        <h3>Digital Art</h3>
+        <p>An exploration of color, composition, atmosphere, and digital storytelling.</p>
+    </article>
+    <article class="project-card">
+        <span class="project-number">PROJECT 03</span>
+        <h3>Creative Poster Design</h3>
+        <p>Visual concepts combining typography, contrast, and creative direction.</p>
+    </article>
+    <article class="project-card">
+        <span class="project-number">PROJECT 04</span>
+        <h3>Personal Portfolio</h3>
+        <p>Building MOSES CREATIVEHUB into a home for original work and future projects.</p>
+    </article>
+</div>
+</div>
+</section>
+
+<section class="section contact" id="contact">
+<div class="container">
+<div class="section-heading">
+    <h2>Let's <span class="accent">Connect</span></h2>
+    <p>Have an idea or want to discuss a creative project?</p>
+</div>
+<div class="contact-box">
+    <h3>Let's Create Something Great.</h3>
+    <p>I'm Moses, the creator of MOSES CREATIVEHUB. Have a creative idea, design project, or business inquiry? Contact me directly.</p>
+    <div class="contact-links">
+        <a class="button button-primary" href="mailto:moseselijahaburu@gmail.com">Email Me ✉</a>
+        <a class="button button-secondary" href="https://wa.me/2349048100697" target="_blank" rel="noopener noreferrer">Chat on WhatsApp ↗</a>
+    </div>
+    <div class="contact-details">
+        <p>Email: <a href="mailto:moseselijahaburu@gmail.com">moseselijahaburu@gmail.com</a></p>
+        <p>Phone: <a href="tel:+2349048100697">+234 904 810 0697</a></p>
+    </div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+    <p>&copy; <span id="year"></span> <strong>MOSES CREATIVEHUB</strong>. Created with creativity.</p>
+</div>
+</footer>
+
+<!-- Supabase JavaScript library -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+(function () {
+    "use strict";
+
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+    const gallery = document.getElementById("gallery");
+    const galleryStatus = document.getElementById("galleryStatus");
+    const filterButtons = document.querySelectorAll(".filter-button");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Mobile navigation
+    menuButton.addEventListener("click", function () {
+        const open = navLinks.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(open));
+        menuButton.textContent = open ? "CLOSE ✕" : "MENU ☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("open");
+            menuButton.setAttribute("aria-expanded", "false");
+            menuButton.textContent = "MENU ☰";
+        });
+    });
+
+    let allProjects = [];
+    let currentFilter = "all";
+
+    function normalizeCategory(category) {
+        const value = String(category || "").trim().toLowerCase();
+
+        if (value.includes("brand") || value.includes("logo")) {
+            return "branding";
+        }
+
+        if (
+            value.includes("digital") ||
+            value.includes("art") ||
+            value.includes("poster") ||
+            value.includes("graphic")
+        ) {
+            return "digital";
+        }
+
+        return "concepts";
+    }
+
+    function showStatus(message, isError) {
+        galleryStatus.textContent = message;
+        galleryStatus.classList.toggle("error", Boolean(isError));
+        galleryStatus.hidden = false;
+    }
+
+    function makeProjectCard(project) {
+        const article = document.createElement("article");
+        article.className = "art-card";
+        article.dataset.category = normalizeCategory(project.category);
+
+        if (currentFilter !== "all" &&
+            article.dataset.category !== currentFilter) {
+            article.hidden = true;
+        }
+
+        const image = document.createElement("img");
+        image.className = "art-image";
+        image.loading = "lazy";
+        image.alt = project.title || "MOSES CREATIVEHUB artwork";
+
+        // Only use valid HTTP(S) image URLs.
+        try {
+            const parsedURL = new URL(project.image_url);
+            if (parsedURL.protocol === "https:" || parsedURL.protocol === "http:") {
+                image.src = parsedURL.href;
+            } else {
+                image.alt = "Image unavailable";
+            }
+        } catch (_) {
+            image.alt = "Image unavailable";
+        }
+
+        image.addEventListener("error", function () {
+            image.alt = "Image could not be loaded";
+            image.style.display = "none";
+        });
+
+        const info = document.createElement("div");
+        info.className = "art-info";
+
+        const title = document.createElement("h3");
+        title.textContent = project.title || "Untitled Design";
+
+        const description = document.createElement("p");
+        description.textContent =
+            project.description || project.category || "Creative design";
+
+        info.appendChild(title);
+        info.appendChild(description);
+
+        article.appendChild(image);
+        article.appendChild(info);
+
+        return article;
+    }
+
+    function renderProjects() {
+        gallery.replaceChildren();
+
+        const visibleProjects = allProjects.filter(function (project) {
+            return currentFilter === "all" ||
+                normalizeCategory(project.category) === currentFilter;
+        });
+
+        if (visibleProjects.length === 0) {
+            showStatus(
+                allProjects.length === 0
+                    ? "No published designs yet. Publish a project from the admin dashboard to display it here."
+                    : "No published designs match this category.",
+                false
+            );
+            return;
+        }
+
+        visibleProjects.forEach(function (project) {
+            gallery.appendChild(makeProjectCard(project));
+        });
+
+        galleryStatus.hidden = true;
+    }
+
+    // Portfolio filters
+    filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            currentFilter = button.dataset.filter;
+
+            filterButtons.forEach(function (item) {
+                const active = item === button;
+                item.classList.toggle("active", active);
+                item.setAttribute("aria-pressed", String(active));
+            });
+
+            renderProjects();
+        });
+    });
+
+    async function loadProjects() {
+        try {
+            if (!window.supabase || !window.supabase.createClient) {
+                throw new Error("The Supabase library did not load. Check your internet connection.");
+            }
+
+            const SUPABASE_URL = "https://xelikizkghuexaxenbhx.supabase.co";
+
+            // This is the project's publishable key, not a service-role secret.
+            const SUPABASE_PUBLISHABLE_KEY =
+                "sb_publishable_3Yx2LVrI8vKFCEm7E_OxJQ_yQU9WhfI";
+
+            const db = window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+            const { data, error } = await db
+                .from("portfolio_items")
+                .select("id,title,description,category,image_url,published,created_at")
+                .eq("published", true)
+        .project-card h3 { font-size:17px; }
     .project-card p { font-size:12px; }
     .contact-box { padding:24px 16px; border-radius:13px; }
     .contact-box h3 { font-size:21px; }
