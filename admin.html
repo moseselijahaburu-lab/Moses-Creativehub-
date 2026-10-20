@@ -2,246 +2,756 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MOSES CREATIVEHUB Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>MOSES CREATIVEHUB | Admin</title>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b1020;color:#fff;font:16px Arial,sans-serif}
-header{padding:20px;background:#151f38;color:#60a5fa}
-main{max-width:800px;margin:auto;padding:15px}
-section{background:#151f38;padding:18px;margin:15px 0;border-radius:12px}
-input,textarea,select{display:block;width:100%;padding:12px;margin:10px 0;background:#0b1020;color:white;border:1px solid #405071;border-radius:6px}
-button{padding:11px;margin:5px 3px 5px 0;border:0;border-radius:6px;background:#2563eb;color:white;font-weight:bold}
-.delete{background:#b91c1c}.publish{background:#15803d}
-img{width:100px;height:85px;object-fit:cover;border-radius:6px}
-.project{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #405071}
-.small{color:#b7c4dd;font-size:13px}
-.hidden{display:none!important}
-#msg{padding:10px;overflow-wrap:anywhere}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b1020;
+  color: #fff;
+  font: 16px Arial, sans-serif;
+}
+
+header {
+  padding: 20px;
+  background: #151f38;
+  color: #60a5fa;
+  text-align: center;
+}
+
+main {
+  max-width: 800px;
+  margin: auto;
+  padding: 15px;
+}
+
+section {
+  background: #151f38;
+  padding: 18px;
+  margin: 15px 0;
+  border-radius: 12px;
+}
+
+input:not([type="checkbox"]),
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background: #0b1020;
+  color: white;
+  border: 1px solid #405071;
+  border-radius: 6px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+}
+
+button {
+  padding: 12px 16px;
+  margin: 5px 3px 5px 0;
+  border: 0;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.delete {
+  background: #b91c1c;
+}
+
+.publish {
+  background: #15803d;
+}
+
+img.project-image {
+  width: 100px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.project {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #405071;
+  overflow-wrap: anywhere;
+}
+
+.project-details {
+  min-width: 0;
+}
+
+.small {
+  color: #b7c4dd;
+  font-size: 13px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#msg {
+  padding: 12px;
+  margin: 10px 0;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  border-radius: 6px;
+  background: #151f38;
+}
+
+.error {
+  color: #fca5a5;
+}
+
+.success {
+  color: #86efac;
+}
+
+.info {
+  color: #93c5fd;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 8px;
+  }
+
+  section {
+    padding: 13px;
+  }
+
+  .project {
+    gap: 8px;
+  }
+
+  img.project-image {
+    width: 80px;
+    height: 75px;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<h2>MOSES CREATIVEHUB</h2>
-<p>Admin Dashboard</p>
+  <h2>MOSES CREATIVEHUB</h2>
+  <p>Portfolio Admin Dashboard</p>
 </header>
+
 <main>
-<div id="msg" role="status"></div>
 
-<section id="login">
-<h3>Admin Login</h3>
-<form id="loginForm">
-<input id="email" type="email" placeholder="Admin email" required>
-<input id="password" type="password" placeholder="Password" required>
-<button id="loginBtn">Sign In</button>
-</form>
-</section>
+  <div id="msg" role="status" aria-live="polite">
+    Loading admin page...
+  </div>
 
-<div id="dashboard" class="hidden">
-<section>
-<p id="who"></p>
-<button id="logout">Sign Out</button>
-</section>
+  <section id="login">
+    <h3>Admin Login</h3>
 
-<section>
-<h3>Add Portfolio Project</h3>
-<form id="projectForm">
-<input id="title" placeholder="Project title" maxlength="150" required>
-<textarea id="description" placeholder="Project description"></textarea>
-<select id="category" required>
-<option value="">Choose category</option>
-<option>Graphic Design</option>
-<option>Video Editing</option>
-<option>Web Design</option>
-<option>Branding</option>
-<option>Photography</option>
-<option>Other</option>
-</select>
-<input id="image" type="file" accept="image/jpeg,image/png,image/webp" required>
-<label><input id="published" type="checkbox" checked style="display:inline;width:auto"> Publish immediately</label>
-<button id="save">Upload and Save</button>
-</form>
-<p class="small">Use an image under 5 MB.</p>
-</section>
+    <form id="loginForm">
+      <label for="email">Admin email</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="Enter your admin email"
+        autocomplete="username"
+        required
+      >
 
-<section>
-<h3>Portfolio Projects</h3>
-<button id="refresh">Refresh Projects</button>
-<div id="projects">Loading...</div>
-</section>
-</div>
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter your password"
+        autocomplete="current-password"
+        required
+      >
+
+      <button id="loginBtn" type="submit">
+        Sign In
+      </button>
+    </form>
+
+    <p class="small">
+      Sign in using an account registered in your Supabase project.
+    </p>
+  </section>
+
+  <div id="dashboard" class="hidden">
+
+    <section>
+      <p id="who"></p>
+      <button id="logout" type="button">Sign Out</button>
+    </section>
+
+    <section>
+      <h3>Add Portfolio Project</h3>
+
+      <form id="projectForm">
+
+        <label for="title">Project title</label>
+        <input
+          id="title"
+          placeholder="Project title"
+          maxlength="150"
+          required
+        >
+
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          placeholder="Project description"
+          rows="4"
+        ></textarea>
+
+        <label for="category">Category</label>
+        <select id="category" required>
+          <option value="">Choose category</option>
+          <option value="Graphic Design">Graphic Design</option>
+          <option value="Video Editing">Video Editing</option>
+          <option value="Web Design">Web Design</option>
+          <option value="Branding">Branding</option>
+          <option value="Photography">Photography</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="image">Project image</label>
+        <input
+          id="image"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          required
+        >
+
+        <label>
+          <input
+            id="published"
+            type="checkbox"
+            checked
+          >
+          Publish immediately
+        </label>
+
+        <button id="save" type="submit">
+          Upload and Save
+        </button>
+
+      </form>
+
+      <p class="small">
+        Supported images: JPG, PNG and WebP. Maximum size: 5 MB.
+      </p>
+    </section>
+
+    <section>
+      <h3>Portfolio Projects</h3>
+      <button id="refresh" type="button">Refresh Projects</button>
+      <div id="projects">Loading projects...</div>
+    </section>
+
+  </div>
+
 </main>
 
 <script>
-const URL="https://xelikizkghuexaxenbhx.supabase.co";
-const KEY="sb_publishable_3Yx2LVrI8vKFCEm7E_OxJQ_yQU9WhfI";
-const TABLE="portfolio_items",BUCKET="portfolio-images";
-const db=supabase.createClient(URL,KEY);
-const $=id=>document.getElementById(id);
-const msg=(text,error=false)=>{
-$("msg").textContent=text;
-$("msg").style.color=error?"#fca5a5":"#86efac";
-};
-let user=null,busy=false;
+"use strict";
 
-function view(userData){
-user=userData;
-$("login").classList.toggle("hidden",!!user);
-$("dashboard").classList.toggle("hidden",!user);
-$("who").textContent=user?"Signed in: "+user.email:"";
+/* SUPABASE CONFIGURATION */
+const SUPABASE_URL =
+  "https://xelikizkghuexaxenbhx.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_3Yx2LVrI8vKFCEm7E_OxJQ_yQU9WhfI";
+
+const TABLE = "portfolio_items";
+const BUCKET = "portfolio-images";
+
+/* CHECK THAT SUPABASE LIBRARY LOADED */
+const $ = id => document.getElementById(id);
+
+let db;
+let currentUser = null;
+let busy = false;
+
+function showMessage(text, type = "info") {
+  const box = $("msg");
+  box.textContent = text;
+  box.className = type;
 }
 
-async function checkLogin(){
-const {data,error}=await db.auth.getUser();
-if(error)throw error;
-view(data.user);
-if(data.user)await loadProjects();
+function showError(error, prefix = "Error") {
+  console.error(prefix, error);
+
+  let detail = "An unexpected error occurred.";
+
+  if (error && error.message) {
+    detail = error.message;
+  } else if (typeof error === "string") {
+    detail = error;
+  }
+
+  showMessage(prefix + ": " + detail, "error");
 }
 
-$("loginForm").onsubmit=async e=>{
-e.preventDefault();
-$("loginBtn").disabled=true;
-try{
-const {data,error}=await db.auth.signInWithPassword({
-email:$("email").value.trim(),
-password:$("password").value
-});
-if(error)throw error;
-view(data.user);
-msg("Login successful.");
-await loadProjects();
-}catch(e){msg(e.message,true)}
-finally{$("loginBtn").disabled=false}
-};
+function setView(user) {
+  currentUser = user || null;
 
-$("logout").onclick=async()=>{
-const {error}=await db.auth.signOut();
-if(error)return msg(error.message,true);
-view(null);msg("Signed out.");
-};
+  $("login").classList.toggle("hidden", !!currentUser);
+  $("dashboard").classList.toggle("hidden", !currentUser);
 
-$("projectForm").onsubmit=async e=>{
-e.preventDefault();
-if(busy)return;
-busy=true;
-$("save").disabled=true;
-let path=null;
-try{
-const {data,error}=await db.auth.getUser();
-if(error)throw error;
-if(!data.user)throw Error("Please sign in again.");
-user=data.user;
-
-const file=$("image").files[0];
-if(!file)throw Error("Choose an image.");
-if(!["image/jpeg","image/png","image/webp"].includes(file.type))
-throw Error("Choose a JPG, PNG or WebP image.");
-if(file.size>5*1024*1024)throw Error("Image must be under 5 MB.");
-
-msg("Uploading image...");
-const ext={ "image/jpeg":"jpg","image/png":"png","image/webp":"webp"}[file.type];
-path=user.id+"/"+Date.now()+"."+ext;
-
-const {error:uploadError}=await db.storage.from(BUCKET)
-.upload(path,file,{contentType:file.type});
-if(uploadError)throw uploadError;
-
-const {data:publicData}=db.storage.from(BUCKET).getPublicUrl(path);
-const {error:insertError}=await db.from(TABLE).insert({
-title:$("title").value.trim(),
-description:$("description").value.trim(),
-category:$("category").value,
-image_url:publicData.publicUrl,
-published:$("published").checked
-});
-if(insertError)throw insertError;
-
-$("projectForm").reset();
-msg("Project saved successfully.");
-await loadProjects();
-}catch(e){
-if(path)await db.storage.from(BUCKET).remove([path]);
-msg("Error: "+e.message,true);
-}finally{
-busy=false;$("save").disabled=false;
-}
-};
-
-async function loadProjects(){
-if(!user)return;
-$("projects").textContent="Loading projects...";
-try{
-const {data,error}=await db.from(TABLE)
-.select("id,title,description,category,image_url,published,created_at")
-.order("created_at",{ascending:false});
-if(error)throw error;
-$("projects").replaceChildren();
-if(!data.length){
-$("projects").textContent="No projects yet.";
-return;
-}
-data.forEach(p=>{
-const box=document.createElement("div");
-box.className="project";
-const img=document.createElement("img");
-img.src=p.image_url;img.alt=p.title;
-const details=document.createElement("div");
-const title=document.createElement("h4");
-title.textContent=p.title;
-const description=document.createElement("p");
-description.textContent=p.description||"";
-const category=document.createElement("p");
-category.textContent=p.category||"Other";
-const status=document.createElement("p");
-status.textContent=p.published?"Published":"Unpublished";
-const toggle=document.createElement("button");
-toggle.className="publish";
-toggle.textContent=p.published?"Unpublish":"Publish";
-toggle.onclick=()=>changePublish(p);
-const del=document.createElement("button");
-del.className="delete";del.textContent="Delete";
-del.onclick=()=>deleteProject(p);
-details.append(title,category,description,status,toggle,del);
-box.append(img,details);
-$("projects").append(box);
-});
-}catch(e){$("projects").textContent="Error: "+e.message}
+  $("who").textContent = currentUser
+    ? "Signed in as: " + currentUser.email
+    : "";
 }
 
-async function changePublish(p){
-if(!confirm((p.published?"Unpublish ":"Publish ")+p.title+"?"))return;
-const {error}=await db.from(TABLE)
-.update({published:!p.published}).eq("id",p.id);
-if(error)msg(error.message,true);
-else{msg("Project updated.");await loadProjects()}
+/* INITIALIZE SUPABASE */
+function initializeSupabase() {
+  if (!window.supabase ||
+      typeof window.supabase.createClient !== "function") {
+    throw new Error(
+      "Supabase library did not load. Check your internet connection and reload the page."
+    );
+  }
+
+  db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+      auth: {
+        persistSession: true,
+        autoRefreshToken: true,
+        detectSessionInUrl: true
+      }
+    }
+  );
 }
 
-async function deleteProject(p){
-if(!confirm("Permanently delete "+p.title+"?"))return;
-const {error}=await db.from(TABLE).delete().eq("id",p.id);
-if(error)return msg(error.message,true);
-try{
-const u=new URL(p.image_url);
-const marker="/storage/v1/object/public/"+BUCKET+"/";
-const i=u.pathname.indexOf(marker);
-if(i>=0){
-const path=decodeURIComponent(u.pathname.slice(i+marker.length));
-const {error:storageError}=await db.storage.from(BUCKET).remove([path]);
-if(storageError)msg("Project deleted, but image removal failed: "+storageError.message,true);
-}
-}catch(e){}
-msg("Project deleted.");
-await loadProjects();
+/* CHECK EXISTING SESSION */
+async function checkSession() {
+  showMessage("Checking your login session...", "info");
+
+  try {
+    const { data, error } = await db.auth.getSession();
+
+    if (error) throw error;
+
+    setView(data.session ? data.session.user : null);
+
+    if (currentUser) {
+      showMessage("Session found. Loading your projects...", "success");
+      await loadProjects();
+    } else {
+      showMessage("Enter your admin email and password.", "info");
+    }
+  } catch (error) {
+    setView(null);
+    showError(error, "Session check failed");
+  }
 }
 
-$("refresh").onclick=loadProjects;
+/* LOGIN */
+$("loginForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-db.auth.onAuthStateChange((event,session)=>{
-if(event==="SIGNED_OUT"){view(null)}
+  showMessage(
+    "LOGIN BUTTON WORKING — connecting to Supabase...",
+    "info"
+  );
+
+  if (!db) {
+    showMessage(
+      "Supabase has not initialized. Reload the page and try again.",
+      "error"
+    );
+    return;
+  }
+
+  if (busy) return;
+  busy = true;
+
+  const button = $("loginBtn");
+  button.disabled = true;
+  button.textContent = "Signing In...";
+
+  try {
+    const email = $("email").value.trim();
+    const password = $("password").value;
+
+    if (!email || !password) {
+      throw new Error("Enter both your email and password.");
+    }
+
+    const result = await db.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (result.error) {
+      throw result.error;
+    }
+
+    if (!result.data.user) {
+      throw new Error(
+        "No user was returned. Check your Supabase authentication settings."
+      );
+    }
+
+    setView(result.data.user);
+
+    showMessage(
+      "Login successful. Loading portfolio projects...",
+      "success"
+    );
+
+    await loadProjects();
+
+  } catch (error) {
+    setView(null);
+    showError(error, "Login failed");
+
+  } finally {
+    busy = false;
+    button.disabled = false;
+    button.textContent = "Sign In";
+  }
 });
 
-checkLogin().catch(e=>msg("Setup error: "+e.message,true));
+/* LOGOUT */
+$("logout").addEventListener("click", async function() {
+  if (!db) return;
+
+  try {
+    const { error } = await db.auth.signOut();
+
+    if (error) throw error;
+
+    setView(null);
+    $("password").value = "";
+
+    showMessage("You have signed out.", "success");
+
+  } catch (error) {
+    showError(error, "Sign out failed");
+  }
+});
+
+/* LOAD PROJECTS */
+async function loadProjects() {
+  if (!db || !currentUser) return;
+
+  const container = $("projects");
+  container.textContent = "Loading projects...";
+
+  try {
+    const { data, error } = await db
+      .from(TABLE)
+      .select(
+        "id,title,description,category,image_url,published,created_at"
+      )
+      .order("created_at", { ascending: false });
+
+    if (error) throw error;
+
+    container.replaceChildren();
+
+    if (!data || data.length === 0) {
+      container.textContent = "No projects found.";
+      showMessage(
+        "You are signed in. Your portfolio has no visible projects yet.",
+        "success"
+      );
+      return;
+    }
+
+    data.forEach(project => {
+      const box = document.createElement("div");
+      box.className = "project";
+
+      const img = document.createElement("img");
+      img.className = "project-image";
+      img.src = project.image_url || "";
+      img.alt = project.title || "Portfolio project";
+      img.loading = "lazy";
+
+      const details = document.createElement("div");
+      details.className = "project-details";
+
+      const title = document.createElement("h4");
+      title.textContent = project.title || "Untitled";
+
+      const category = document.createElement("p");
+      category.textContent = project.category || "Other";
+
+      const description = document.createElement("p");
+      description.textContent = project.description || "";
+
+      const status = document.createElement("p");
+      status.textContent = project.published
+        ? "Published"
+        : "Unpublished";
+
+      const toggle = document.createElement("button");
+      toggle.className = "publish";
+      toggle.type = "button";
+      toggle.textContent = project.published
+        ? "Unpublish"
+        : "Publish";
+
+      toggle.addEventListener("click", function() {
+        changePublish(project);
+      });
+
+      const del = document.createElement("button");
+      del.className = "delete";
+      del.type = "button";
+      del.textContent = "Delete";
+
+      del.addEventListener("click", function() {
+        deleteProject(project);
+      });
+
+      details.append(
+        title,
+        category,
+        description,
+        status,
+        toggle,
+        del
+      );
+
+      box.append(img, details);
+      container.append(box);
+    });
+
+    showMessage(
+      "Projects loaded successfully.",
+      "success"
+    );
+
+  } catch (error) {
+    container.textContent =
+      "Could not load projects. Check database permissions.";
+
+    showError(error, "Project loading failed");
+  }
+}
+
+/* ADD PROJECT */
+$("projectForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  if (!db || !currentUser) {
+    showMessage("Please sign in again.", "error");
+    return;
+  }
+
+  if (busy) return;
+  busy = true;
+
+  const button = $("save");
+  button.disabled = true;
+  button.textContent = "Uploading...";
+
+  let uploadedPath = null;
+
+  try {
+    const title = $("title").value.trim();
+    const description = $("description").value.trim();
+    const category = $("category").value;
+    const file = $("image").files[0];
+
+    if (!title) {
+      throw new Error("Enter a project title.");
+    }
+
+    if (!file) {
+      throw new Error("Choose an image.");
+    }
+
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/webp"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      throw new Error("Choose a JPG, PNG or WebP image.");
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      throw new Error("Your image must be smaller than 5 MB.");
+    }
+
+    const extension = {
+      "image/jpeg": "jpg",
+      "image/png": "png",
+      "image/webp": "webp"
+    }[file.type];
+
+    uploadedPath =
+      currentUser.id + "/" + Date.now() + "." + extension;
+
+    showMessage("Uploading project image...", "info");
+
+    const { error: uploadError } = await db
+      .storage
+      .from(BUCKET)
+      .upload(uploadedPath, file, {
+        contentType: file.type,
+        upsert: false
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data: publicData } = db
+      .storage
+      .from(BUCKET)
+      .getPublicUrl(uploadedPath);
+
+    const { error: insertError } = await db
+      .from(TABLE)
+      .insert({
+        title: title,
+        description: description,
+        category: category,
+        image_url: publicData.publicUrl,
+        published: $("published").checked
+      });
+
+    if (insertError) throw insertError;
+
+    $("projectForm").reset();
+
+    showMessage("Project uploaded and saved successfully.", "success");
+
+    await loadProjects();
+
+  } catch (error) {
+    showError(error, "Upload failed");
+
+    if (uploadedPath) {
+      try {
+        await db.storage.from(BUCKET).remove([uploadedPath]);
+      } catch (cleanupError) {
+        console.error("Image cleanup failed", cleanupError);
+      }
+    }
+
+  } finally {
+    busy = false;
+    button.disabled = false;
+    button.textContent = "Upload and Save";
+  }
+});
+
+/* PUBLISH OR UNPUBLISH */
+async function changePublish(project) {
+  if (!confirm(
+    (project.published ? "Unpublish " : "Publish ") +
+    project.title + "?"
+  )) {
+    return;
+  }
+
+  try {
+    const { error } = await db
+      .from(TABLE)
+      .update({ published: !project.published })
+      .eq("id", project.id);
+
+    if (error) throw error;
+
+    showMessage("Project status updated.", "success");
+    await loadProjects();
+
+  } catch (error) {
+    showError(error, "Could not update project");
+  }
+}
+
+/* DELETE PROJECT */
+async function deleteProject(project) {
+  if (!confirm(
+    "Permanently delete " + project.title + "?"
+  )) {
+    return;
+  }
+
+  try {
+    const { error } = await db
+      .from(TABLE)
+      .delete()
+      .eq("id", project.id);
+
+    if (error) throw error;
+
+    showMessage(
+      "Project record deleted. Refreshing the list...",
+      "success"
+    );
+
+    await loadProjects();
+
+  } catch (error) {
+    showError(error, "Could not delete project");
+  }
+}
+
+/* REFRESH */
+$("refresh").addEventListener("click", loadProjects);
+
+/* AUTHENTICATION STATE */
+function listenForAuthChanges() {
+  db.auth.onAuthStateChange((event, session) => {
+    if (event === "SIGNED_OUT") {
+      setView(null);
+      showMessage("You have signed out.", "info");
+    } else if (event === "SIGNED_IN" && session) {
+      setView(session.user);
+    }
+  });
+}
+
+/* START */
+async function startApp() {
+  try {
+    if (!navigator.onLine) {
+      throw new Error(
+        "Your phone appears to be offline. Connect to the internet and reload."
+      );
+    }
+
+    initializeSupabase();
+    listenForAuthChanges();
+    await checkSession();
+
+  } catch (error) {
+    setView(null);
+    showError(error, "Setup failed");
+  }
+}
+
+startApp();
 </script>
+
 </body>
 </html>
